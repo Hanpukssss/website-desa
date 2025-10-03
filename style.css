@@ -1,0 +1,1396 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; 
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+/* Header */
+header {
+    background: #068042;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Cegah logo mengecil di mobile */
+}
+
+.logo img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.header-text h1 {
+    margin: 0;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 10px;
+    color: white;
+}
+
+.header-text p {
+    margin: 0;
+    font-size: 14px;
+    margin-left: 10px;
+    color: white;
+}
+
+/* Navigasi */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Spacing konsisten */
+}
+
+.nav-menu ul li {
+    margin: 0; /* Hapus margin duplikat */
+}
+
+.nav-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold; /* Dari rule duplikat */
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #ffcc00;
+    text-decoration: underline; /* Dari rule duplikat */
+}
+
+/* Menu Toggle (Hamburger) - Default tersembunyi di desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+/* Landing Page */
+.landing-page {
+    padding-top: 70px; /* Sesuaikan dengan tinggi header fixed */
+    height: 100vh;
+    background: #f4f4f4;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 1.5s ease;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 10;
+    border-radius: 50%; /* Tambah untuk bentuk bulat */
+    width: 50px;
+    height: 50px; /* Ukuran tetap untuk touch */
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.landing-text {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: 10;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: left;
+    max-width: 60%; /* Cegah overflow di mobile */
+}
+
+.landing-text h2 {
+    font-size: 48px;
+    margin: 0;
+    color: #068042;
+}
+
+.landing-text h1 {
+    font-size: 72px;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.landing-text p {
+    font-size: 20px;
+    margin: 10px 0 0;
+    color: #fff;
+}
+
+/* Jelajahi Desa */
+.jelajahi-desa, .sambutan {
+    padding: 50px 0;
+    background: #fff;
+}
+
+.jelajahi-desa .content, .sambutan .content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 40px; 
+}
+
+.jelajahi-left, .sambutan-left {
+    flex: 1;
+}
+
+.jelajahi-left {
+    padding-top: 20px; 
+    text-align: left; 
+}
+
+.jelajahi-right, .sambutan-right {
+    flex: 1;
+}
+
+.jelajahi-right {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.logo-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 400px; 
+    justify-content: flex-end; 
+}
+
+.logo-item {
+    text-align: center;
+}
+
+.nav-logo {
+    height: 200px; 
+    width: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fff;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.logo-item a:hover .nav-logo {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.logo-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.logo-item a:hover p {
+    color: #068042;
+}
+
+/* Jelajahi-left p - Pastikan teks tidak overflow */
+.jelajahi-left p {
+    max-width: none;
+    font-size: 18px; /* Sesuaikan dengan p umum */
+    line-height: 1.6;
+}
+
+/* Sambutan */
+.sambutan {
+    padding: 50px 0;
+    background: #fff;
+}
+
+.sambutan .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 40px; /* PERBAIKAN: Tutup kurung } yang hilang */
+}
+
+.sambutan-left {
+    flex: 0.8; 
+    text-align: center;
+    margin-left: 40px;
+}
+
+.sambutan-left img {
+    height: 300px;
+    vertical-align: middle;
+    max-width: 100%; 
+}
+
+.sambutan-right {
+    flex: 1.2; 
+    color: black; /* Pastikan warna teks hitam (dari asli) */
+    text-align: left;
+    margin-right: 40px; /* PERBAIKAN: Dorong teks lebih ke kiri (indent dari kanan) */
+}
+
+.sambutan-right h2 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #068042;
+    margin: 0 0 10px;
+}
+
+.sambutan-right h3 {
+    font-size: 24px;
+    color: black;
+    margin: 0 0 20px;
+    font-weight: normal;
+}
+
+.sambutan-right h4 {
+    font-size: 15px;
+    color: black;
+    margin: 0 0 20px;
+    font-weight: normal;
+}
+
+.sambutan-right p {
+    font-size: 16px;
+    color: black;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.sambutan-logo {
+    height: 80px; 
+}
+
+.sambutan-right {
+    max-width: 60%;
+}
+
+h1 {
+    color: #068042;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #068042;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+h2 + h1 {
+    margin-top: 0;
+}
+
+h3 {
+    color: #068042;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+p {
+    font-size: 18px;
+    color: black;
+    margin-top: 10px;
+}
+
+.jelajahi-left p, .sambutan-right p {
+    max-width: none;
+}
+
+/* Section Umum */
+.profil, .peta, .sotk, .penduduk, .berita, .galeri {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Peta */
+.peta {
+    position: relative;
+}
+
+.map-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Stack di mobile */
+}
+
+.map-button {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease; /* Dari rule umum */
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 500px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.satellite-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* SOTK (Sudah bagus, tambah minor) */
+.sotk {
+    padding: 60px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+}
+
+.sotk h2 {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.sotk > p {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.sotk-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-sotk {
+    background: linear-gradient(135deg, #068042, #056d35);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 280px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.card-sotk::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #ffcc00;
+}
+
+.card-sotk img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-sotk:hover img {
+    transform: scale(1.05);
+}
+
+.card-sotk h3 {
+    margin: 15px 0 8px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.card-sotk p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: #f0f0f0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-sotk:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.sotk-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 40px;
+    color: #068042;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 12px 24px;
+    background: #ffffff;
+    border: 2px solid #068042;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.sotk-link:hover {
+    color: white;
+    background: #068042;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(6,128,66,0.3);
+}
+
+.link-icon {
+    margin-left: 8px;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.sotk-link:hover .link-icon {
+    transform: scale(1.2);
+}
+
+/* Penduduk */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: #068042;
+    color: white;
+    padding: 40px 20px;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 200px; /* Cegah terlalu kecil di mobile */
+}
+
+.stat-box span {
+    font-size: 48px;
+    font-weight: bold;
+    display: block;
+    color: white;
+}
+
+.stat-box p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* Berita */
+.berita-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.berita-box {
+    background: #068042;
+    color: white;
+    padding: 20px;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    min-width: 150px; /* Adaptif */
+}
+
+/* Galeri */
+.galeri-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.galeri-box {
+    width: 250px; /* Fixed awal, tapi adaptif di media query */
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.galeri-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    background: #068042;
+    color: white;
+    padding: 20px 0;
+    text-align: left;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left, .footer-middle, .footer-right {
+    margin: 10px 0;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-left-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap; /* Stack jika terlalu sempit */
+}
+
+.footer-logo {
+    height: 100px;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.footer-text h3 {
+    font-size: 24px;
+    margin: 0;
+    color: white;
+}
+
+.footer-text p {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: white;
+}
+
+.footer-middle h3, .footer-right h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.footer-middle p, .footer-right p {
+    font-size: 14px;
+    margin: 5px 0;
+    color: white;
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffcc00;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+    color: white;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Efek Hover Umum (Gabung dari rule duplikat asli) */
+.map-button:hover, .satellite-button:hover, .sotk-link:hover, .footer-link:hover {
+    transform: scale(1.05);
+    background-color: #068042;
+    color: white;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+/* Main (dari rule duplikat, jika ada main tag) */
+main {
+    background-color: #f9f9f9;
+    color: black;
+    padding: 100px 20px 20px;
+    min-height: 400px;
+}
+
+section h2 {
+    color: darkgreen;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    color: black;
+}
+
+/* ===== MEDIA QUERIES UNTUK RESPONSIFITAS ===== */
+
+/* Tablet (max-width: 1024px) - Adjust spacing dan font minor, termasuk sambutan */
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+
+    .jelajahi-desa .content, .sambutan .content {
+        flex-direction: row; /* Tetap horizontal di tablet, tapi adjust gap */
+        gap: 30px;
+        padding: 0 15px;
+        align-items: center; /* Pertahankan center vertikal */
+    }
+
+    .jelajahi-right {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .logo-container {
+        max-width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .nav-logo {
+        height: 150px;
+        width: 150px;
+    }
+
+    /* Sambutan - Adjust margin untuk balance di tablet */
+    .sambutan-left {
+        margin-left: 20px; /* Kurangi indent */
+        flex: 1;
+    }
+
+    .sambutan-left img {
+        height: 200px;
+    }
+
+    .sambutan-right {
+        margin-right: 20px; /* Kurangi indent */
+        flex: 1;
+        max-width: 70%;
+    }
+
+    .sambutan-right h2 {
+        font-size: 40px;
+    }
+
+    .sambutan-right p {
+        font-size: 15px;
+    }
+
+    .sotk-container {
+        gap: 25px;
+    }
+
+    .card-sotk {
+        width: 250px;
+    }
+
+    .stats-container, .berita-container, .galeri-container {
+        gap: 15px;
+    }
+
+    .galeri-box {
+        width: 200px;
+        height: 150px;
+    }
+
+    .footer-container {
+        padding: 0 15px;
+        gap: 15px;
+    }
+
+    .landing-text {
+        left: 5%;
+        max-width: 80%;
+    }
+
+    .landing-text h1 {
+        font-size: 60px;
+    }
+
+    .landing-text h2 {
+        font-size: 40px;
+    }
+}
+
+/* Mobile Besar (max-width: 768px) - Stack layout, hamburger menu aktif, sambutan stack vertikal */
+@media (max-width: 768px) {
+    /* Header dan Nav */
+    .header-container {
+        padding: 0 10px;
+    }
+
+    .logo {
+        flex: 1;
+    }
+
+    .header-text h1 {
+        font-size: 18px;
+    }
+
+    .header-text p {
+        font-size: 12px;
+    }
+
+    .menu-toggle {
+        display: block; /* Tampilkan hamburger */
+    }
+
+    .nav-menu ul {
+        display: none; /* Sembunyikan default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #068042;
+        flex-direction: column;
+        padding: 10px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 999;
+    }
+
+    .nav-menu ul.active {
+        display: flex; /* Tampil saat toggle */
+    }
+
+    .nav-menu ul li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu ul li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 18px; /* Lebih besar untuk touch */
+    }
+
+    /* Landing Page */
+    .landing-page {
+        padding-top: 60px; /* Adjust untuk header mobile */
+        height: 80vh; /* Kurangi height agar tidak terlalu panjang */
+    }
+
+    .prev-btn, .next-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        padding: 5px;
+    }
+
+    .landing-text {
+        top: 15%;
+        left: 5%;
+        right: 5%;
+        text-align: center;
+        max-width: 90%;
+    }
+
+    .landing-text h1 {
+        font-size: 48px;
+    }
+
+    .landing-text h2 {
+        font-size: 32px;
+    }
+
+    .landing-text p {
+        font-size: 18px;
+    }
+
+    /* Jelajahi Desa */
+    .jelajahi-desa .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .jelajahi-right {
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .logo-container {
+        grid-template-columns: 1fr; /* Stack vertikal */
+        max-width: 300px;
+        gap: 15px;
+    }
+
+    .nav-logo {
+        height: 120px;
+        width: 120px;
+    }
+
+    /* Sambutan - PERBAIKAN: Stack vertikal, reset margin, center balance */
+    .sambutan {
+        padding: 40px 15px; /* Kurangi padding */
+    }
+
+    .sambutan .content {
+        flex-direction: column !important; /* Paksa stack vertikal */
+        justify-content: center !important;
+        align-items: center !important; /* Center horizontal dan vertikal */
+        text-align: center !important;
+        gap: 20px !important;
+        padding: 0 15px !important;
+        width: 100% !important; /* Pastikan full width */
+    }
+
+    .sambutan-left {
+        margin-left: 0 !important; /* Reset indent */
+        margin-right: 0 !important;
+        padding: 0 !important;
+        order: 1; /* Logo di atas */
+        flex: none !important; /* Tidak flex lagi */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .sambutan-left img {
+        height: 150px !important;
+        width: auto;
+        margin: 0 auto; /* Center gambar */
+    }
+
+    .sambutan-right {
+        margin-right: 0 !important; /* Reset indent */
+        margin-left: 0 !important;
+        padding: 0 !important;
+        order: 2; /* Teks di bawah */
+        text-align: center !important; /* Center teks */
+        max-width: 100% !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    .sambutan-right h2 {
+        font-size: 36px !important;
+    }
+
+    .sambutan-right h3 {
+        font-size: 20px !important;
+    }
+
+    .sambutan-right h4 {
+        font-size: 14px !important;
+    }
+
+    .sambutan-right p {
+        font-size: 14px !important;
+        line-height: 1.5;
+        margin-bottom: 15px; /* Spacing paragraf lebih baik di mobile */
+    }
+
+    .sambutan-logo {
+        height: 60px;
+    }
+
+    /* Peta */
+    .map-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .map-button {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .map-container {
+        height: 400px; /* Kurangi height */
+    }
+
+    .satellite-button {
+        position: static; /* Pindah ke bawah iframe di mobile */
+        margin-top: 10px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    /* SOTK */
+    .sotk {
+        padding: 40px 15px;
+    }
+
+    .sotk h2 {
+        font-size: 36px;
+    }
+
+    .sotk-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card-sotk {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card-sotk img {
+        height: 200px;
+    }
+
+    /* Penduduk, Berita, Galeri */
+    .penduduk, .berita, .galeri {
+        padding: 40px 15px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .stat-box {
+        width: 100%;
+        max-width: 250px;
+        padding: 30px 15px;
+    }
+
+    .stat-box span {
+        font-size: 36px;
+    }
+
+    .berita-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .berita-box {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .galeri-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .galeri-box {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+    }
+
+    /* Footer */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 15px;
+        gap: 15px;
+    }
+
+    .footer-left-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .footer-middle, .footer-right {
+        min-width: auto;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .social-icons a {
+        font-size: 24px; /* Lebih besar untuk touch */
+    }
+}
+
+/* Mobile Kecil (max-width: 480px) - Minimalisasi lebih lanjut, sambutan lebih minimal */
+@media (max-width: 480px) {
+    /* Header */
+    .header-container {
+        padding: 0 10px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .header-text h1 {
+        font-size: 16px;
+    }
+
+    .header-text p {
+        font-size: 11px;
+        display: none; /* Sembunyikan subtitle di sangat kecil */
+    }
+
+    .menu-toggle {
+        font-size: 24px;
+    }
+
+    .nav-menu ul li a {
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+
+    /* Landing */
+    .landing-page {
+        height: 70vh;
+        padding-top: 50px;
+    }
+
+    .landing-text {
+        top: 10%;
+    }
+
+    .landing-text h1 {
+        font-size: 36px;
+    }
+
+    .landing-text h2 {
+        font-size: 24px;
+    }
+
+    .landing-text p {
+        font-size: 16px;
+    }
+
+    /* Umum Sections */
+    .jelajahi-desa, .sambutan, .peta, .sotk, .penduduk, .berita, .galeri {
+        padding: 30px 10px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    /* Logo Items */
+    .nav-logo {
+        height: 100px;
+        width: 100px;
+    }
+
+    .logo-item p {
+        font-size: 12px;
+    }
+
+    /* Sambutan - PERBAIKAN: Lebih minimal, pastikan tidak overflow */
+    .sambutan {
+        padding: 30px 10px !important;
+    }
+
+    .sambutan .content {
+        gap: 15px !important;
+        padding: 0 10px !important;
+    }
+
+    .sambutan-left img {
+        height: 120px !important;
+    }
+
+    .sambutan-right h2 {
+        font-size: 28px !important;
+    }
+
+    .sambutan-right h3 {
+        font-size: 18px !important;
+    }
+
+    .sambutan-right h4 {
+        font-size: 13px !important;
+    }
+
+    .sambutan-right p {
+        font-size: 13px !important;
+        line-height: 1.4;
+    }
+
+    /* Peta */
+    .map-container {
+        height: 300px;
+    }
+
+    .map-button {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* SOTK */
+    .sotk h2 {
+        font-size: 28px;
+    }
+
+    .sotk > p {
+        font-size: 16px;
+    }
+
+    .card-sotk h3 {
+        font-size: 18px;
+    }
+
+    .card-sotk p {
+        font-size: 14px;
+    }
+
+    /* Stats */
+    .stat-box {
+        padding: 20px 10px;
+    }
+
+    .stat-box span {
+        font-size: 28px;
+    }
+
+    .stat-box p {
+        font-size: 14px;
+    }
+
+    /* Berita & Galeri */
+    .berita-box {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .galeri-box {
+        max-width: 250px;
+        height: 150px;
+    }
+
+    /* Footer */
+    .footer-text h3 {
+        font-size: 20px;
+    }
+
+    .footer-text p, .footer-middle p, .footer-right p {
+        font-size: 12px;
+    }
+
+        .footer-middle h3, .footer-right h3 {
+        font-size: 16px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+    }
+
+    /* Hero/Slider Perbaikan Tambahan (dari rule duplikat) */
+    .hero, .carousel {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hero img, .carousel img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Grid/Flex Perbaikan (dari rule duplikat) */
+    .grid-2, .flex-row {
+        display: block;
+        width: 100%;
+    }
+
+    .grid-2 > div, .flex-row > div {
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+
+    /* Nav Links Perbaikan (jika ada class tambahan) */
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #068042;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
